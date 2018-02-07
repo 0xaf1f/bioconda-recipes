@@ -1,0 +1,32 @@
+{% set version = "0.2.0" %}
+
+package:
+  name: biodiff
+  version: {{ version }}
+
+source:
+  fn: archive.tar.gz
+  url: https://gitlab.com/LPCDRP/biodiff/repository/{{ version }}/archive.tar.gz
+  sha256: 9000c392d0429b41b375247e765b0ff54a1f36550304b9dc029a0a2cf12066bc
+
+build:
+  number: 0
+  noarch: generic
+
+requirements:
+  build:
+    - autoconf
+    - automake
+    - pandoc
+  run:
+    - perl
+
+test:
+  commands:
+    - biodiff <(echo -e "ref>\nACTGCCCA") <(echo -e "qry>\nACTTCCCA")
+
+about:
+  home: https://gitlab.com/LPCDRP/biodiff
+  license: GPLv3+
+  license_file: LICENSE
+  summary: 'exact comparison of biological sequences'
