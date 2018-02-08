@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  noarch: generic
+  skip: True #[osx]
 
 requirements:
   build:
@@ -23,7 +23,7 @@ requirements:
 
 test:
   commands:
-    - biodiff <(echo -e "ref>\nACTGCCCA") <(echo -e "qry>\nACTTCCCA")
+    - bash -c "biodiff <(echo -e 'ref>\nACTGCCCA') <(echo -e 'qry>\nACTTCCCA')"
 
 about:
   home: https://gitlab.com/LPCDRP/biodiff
